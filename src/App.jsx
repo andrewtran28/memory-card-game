@@ -3,8 +3,6 @@ import { useState } from 'react';
 import Card from './components/MemoryGame'
 import GetVillager from './components/Nookipedia'
 
-// let deck = ["1 Dog", "2 Cat", "3 Frog", "4 Bear"];
-
 const numCards = 4; //Defines number of cards for game
 
 const initializeDeck = () => {
@@ -23,10 +21,10 @@ const initializeDeck = () => {
   return deck;
 }
 
-const deck = initializeDeck();
+let deck = initializeDeck();
 
 function App() {
-  const [list, setList] = useState(deck);
+  //const [list, setList] = useState(deck);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [memory, setMemory] = useState([]);
@@ -48,8 +46,7 @@ function App() {
     if(memory.includes(chosenCard)) {
       console.log("You lost");
 
-      setScore(0);
-      setMemory([]);
+      resetGame();
     } else {
       setScore((score) => {
         var newScore = score + 1;
@@ -63,14 +60,19 @@ function App() {
       if ((memory.length + 1) === deck.length) {
         console.log("You win");
 
-        setScore(0);
-        setMemory([]);
+        resetGame();
       }
     }
 
-    const arrayCopy = list;
+    // const arrayCopy = list;
     shuffleDeck(deck);
-    setList(() => arrayCopy);
+    // setList(() => arrayCopy);
+  }
+
+  const resetGame = () => {
+    setScore(0);
+    setMemory([]);
+    deck = initializeDeck();
   }
 
   return (
