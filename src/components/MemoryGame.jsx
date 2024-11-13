@@ -1,51 +1,43 @@
 import GetVillager from "./Nookipedia";
 
-function setupDeck() {
-    // let deck = ["A", "B", "C", "D"];
 
-    let deck = [];
-    for (var i = 0; i < 4; i++) {
-        deck.push(GetVillager());
-    }
+// function shuffleDeck(deck) {
+//     let currentIndex = deck.length;
 
-    return deck;
-}
+//     while (currentIndex != 0) {
 
-function shuffleDeck(deck) {
-    let currentIndex = deck.length;
-
-    while (currentIndex != 0) {
-
-      let randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
+//       let randomIndex = Math.floor(Math.random() * currentIndex);
+//       currentIndex--;
   
-      [deck[currentIndex], deck[randomIndex]] = [deck[randomIndex], deck[currentIndex]];
-    }
-}
+//       [deck[currentIndex], deck[randomIndex]] = [deck[randomIndex], deck[currentIndex]];
+//     }
+// }
 
-function CardTable({cardSelect}) {
-    let deck = setupDeck();
-    shuffleDeck(deck);
+// function Card({deck, cardChosen}) {
+//     const deckArray = deck.map((card) => {
+//         const index = deck.indexOf(card);
+//         return (
+//             <div>
+//                 <li key={index} data-key={index} className="card-list">
+//                     <button className="btn-card" onClick={() => cardChosen(deck[index])}>{deck[index]}</button>
+//                 </li>
+//             </div>
+//         )
+//     });
 
-    const deckArray = deck.map((card) => {
-        const index = deck.indexOf(card);
+//     return(
+//         <div className="table">
+//             <ul>{deckArray}</ul>
+//         </div>
+//     )
+// }
 
-        return (
-            <div>
-                <li key={index} data-key={index} className="card-list">
-                    <button className="btn-card" onClick={() => cardSelect(deck[index])}>{deck[index]}</button>
-                </li>
-            </div>
-
-        )
-    })
-
-    return(
-        <div className="table">
-            <ul>{deckArray}</ul>
+function Card({ name, handleCardClick }) {
+    return (
+        <div className="card">
+            <button onClick={handleCardClick}>{name}</button>
         </div>
     )
 }
 
-// export default SetupDeck;
-export default CardTable;
+export default Card;
