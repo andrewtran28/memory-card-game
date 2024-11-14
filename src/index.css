@@ -2,20 +2,39 @@
 
 body {
   font-family: Roboto, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: rgba(255, 255, 255, 0.87);
+  color: #695c27;
   background-color: #c7dba2;
   max-height: 100vh;
   margin: 0;
   padding: 0;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+.scoreboard {
+  border-radius: 8px;
+  border: 5px solid #0a715e;
+  background-color: #b8e0c8;
+
+  font-size: 2rem;
 }
-a:hover {
-  color: #535bf2;
+
+.cards-cont {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 8px;
+  
+  border: 5px solid #8bc6da;
+  background-color: #c5e3ed;
+  
+}
+
+.card-img {
+  width: 160px;
+  height: 200px;
+}
+
+.card-name {
+  margin-top: 20px;
+  font-size: 2rem;
 }
 
 body {
@@ -26,15 +45,10 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
 button {
   border-radius: 8px;
-  border: 5px solid #9fc67a;
-  background-color:  #e6efd6;
+  border: 5px solid #a4610e;
+  background-color: #fbe8d0;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -43,10 +57,5 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #e7000a;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-

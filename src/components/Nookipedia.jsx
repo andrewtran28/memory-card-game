@@ -1,5 +1,4 @@
 const keyAPI =  "bdeedb12-5be5-49c5-be53-b7e3d4ec381f";
-//https://api.nookipedia.com/villagers?api_key=bdeedb12-5be5-49c5-be53-b7e3d4ec381f
 
 async function getNookipediaData() {
     const url = `https://api.nookipedia.com/villagers?api_key=${(keyAPI)}`;

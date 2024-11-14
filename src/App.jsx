@@ -1,16 +1,17 @@
 import './App.css'
 import { useState, useEffect } from 'react';
-import Card from './components/Card';
 import getNookipediaData from './components/Nookipedia';
+import Card from './components/Card';
 
-const numCards = 4; //Defines number of cards for game
 let villagers = await getNookipediaData();
 
 function App() {
   const [deck, setDeck] = useState([]);
+  const [difficulty, setDifficulty] = useState(6);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [memory, setMemory] = useState([]);
+  var deckSize = difficulty;
 
   const initializeDeck = () => {
     GetVillagers()
@@ -32,7 +33,7 @@ function App() {
     let stack = [];
     let indexStack = [];
 
-    for (var i = 0; i < numCards; i++) {
+    for (var i = 0; i < deckSize; i++) {
         var index = RandomNumber();
 
         //Re-choose index if stack already has this number
@@ -88,7 +89,16 @@ function App() {
     shuffleDeck(deck);
   }
 
-  const resetGame = () => {
+  const resetGame = (difficulty) => {
+
+    if (difficulty < 4) {
+      deckSize = 4;
+      setDifficulty(4);
+    } else if (difficulty > 20) {
+      deckSize = 20;
+      setDifficulty(20);
+    }
+
     setScore(0);
     setMemory([]);
     initializeDeck();
@@ -96,21 +106,39 @@ function App() {
 
   return (
     <div>
-      {deck.map((card) => {
-        return (
-          <Card
-            name={card.name}
-            img={card.img}
-            key={card.name}
-            handleCardClick={() => handleCardClick(card.name)}
-          /> 
-        );
-      })}
 
-      <p>Score: {score}</p>
-      <p>Memory: {memory}</p>
+      <section className="header-cont">
+        <div className="header">
+          Memory Card Game
+        </div>
 
-      <p>High Score: {highScore}</p>
+        <div className="difficulty-cont">
+          <label>Difficulty: </label>
+          <input type="number" min="4" max="20" value={difficulty} onChange={e => setDifficulty(e.target.value)}/>
+          <button onClick={() => resetGame(difficulty)}>Reset Game</button>
+        </div>
+      </section>
+
+      <section className="scoreboard">
+        <p>Score: {score}</p>
+        <p>High Score: {highScore}</p>
+        <p>Memory: {memory}</p>
+      </section>
+
+      <section className="cards-cont">
+        {deck.map((card) => {
+          return (
+            <Card
+              name={card.name}
+              img={card.img}
+              key={card.name}
+              handleCardClick={() => handleCardClick(card.name)}
+            /> 
+          );
+        })}    
+      </section>
+
+
     </div>
   )
 }
