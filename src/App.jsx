@@ -90,7 +90,6 @@ function App() {
   }
 
   const resetGame = (difficulty) => {
-
     if (difficulty < 4) {
       deckSize = 4;
       setDifficulty(4);
@@ -102,6 +101,12 @@ function App() {
     setScore(0);
     setMemory([]);
     initializeDeck();
+  }
+
+  const toggleName = () => {
+    const cardClass = document.querySelectorAll(".card-name");
+    let cardList = [...cardClass];
+    cardList.forEach(card => card.classList.toggle('toggle-name'));
   }
 
   return (
@@ -116,11 +121,12 @@ function App() {
           <label>Difficulty: </label>
           <input type="number" min="4" max="20" value={difficulty} onChange={e => setDifficulty(e.target.value)}/>
           <button id="btn-reset" onClick={() => resetGame(difficulty)}>Set</button>
+          <button id="btn-toggle-name" onClick={() => toggleName()}>Toggle Names</button>
         </div>
 
         <div className="scoreboard">
-        <span>Score: {score}</span>
         <span>High Score: {highScore}</span>
+        <span>Score: {score}</span>
       </div>
       </section>
 
