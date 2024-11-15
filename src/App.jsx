@@ -1,5 +1,5 @@
-import './App.css'
 import { useState, useEffect } from 'react';
+import logoACNH from './assets/logoACNH.webp'
 import getNookipediaData from './components/Nookipedia';
 import Card from './components/Card';
 
@@ -7,10 +7,10 @@ let villagers = await getNookipediaData();
 
 function App() {
   const [deck, setDeck] = useState([]);
-  const [difficulty, setDifficulty] = useState(6);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [memory, setMemory] = useState([]);
+  const [difficulty, setDifficulty] = useState(6);
   var deckSize = difficulty;
 
   const initializeDeck = () => {
@@ -25,7 +25,7 @@ function App() {
   },[]);
 
   const RandomNumber = () => {
-    const VILLAGER_NUM = 488; //Total villagers in Animal Crossing: New Horizons
+    const VILLAGER_NUM = 488; //Total villagers in Animal Crossing Series
     return Math.floor(Math.random() * VILLAGER_NUM);
   }
 
@@ -36,8 +36,8 @@ function App() {
     for (var i = 0; i < deckSize; i++) {
         var index = RandomNumber();
 
-        //Re-choose index if stack already has this number
-        while (indexStack.includes(index)) {
+        //Re-choose index if stack already has this number OR if villager does not appear in New Horizons
+        while (indexStack.includes(index) || !villagers[index].appearances.includes("NH")) {
           index = RandomNumber();
         }
 
@@ -106,23 +106,22 @@ function App() {
 
   return (
     <div>
-
       <section className="header-cont">
         <div className="header">
-          Memory Card Game
+          <img className="logo" src={logoACNH}/>
+          <h1>Memory Game</h1>
         </div>
 
-        <div className="difficulty-cont">
+        <div className="difficulty">
           <label>Difficulty: </label>
           <input type="number" min="4" max="20" value={difficulty} onChange={e => setDifficulty(e.target.value)}/>
-          <button onClick={() => resetGame(difficulty)}>Reset Game</button>
+          <button id="btn-reset" onClick={() => resetGame(difficulty)}>Set</button>
         </div>
-      </section>
 
-      <section className="scoreboard">
-        <p>Score: {score}</p>
-        <p>High Score: {highScore}</p>
-        <p>Memory: {memory}</p>
+        <div className="scoreboard">
+        <span>Score: {score}</span>
+        <span>High Score: {highScore}</span>
+      </div>
       </section>
 
       <section className="cards-cont">
@@ -137,8 +136,6 @@ function App() {
           );
         })}    
       </section>
-
-
     </div>
   )
 }

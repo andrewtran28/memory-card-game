@@ -1,30 +1,124 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
 
 body {
-  font-family: Roboto, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: #695c27;
+  font-family: Suez One, sans-serif, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+  color: #74664b;
   background-color: #c7dba2;
-  max-height: 100vh;
   margin: 0;
+  padding: 0;
+  font-size: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section {
+  max-width: 2000px;
+  margin: 20px;
+}
+
+button {
+  padding: 10px;
+}
+
+.header-cont {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 5px solid #9ac375;
+  border-radius: 8px;
+  background-color: #e6efd6;
+  padding: 15px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #ffd045;
+  background-color: #ae783d;
+  text-shadow: 3px 2px #6f4319;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 0 5px;
+  text-align: center;
+  transform: rotate(-5deg);
+  box-shadow: 3px 3px #6f4319;
+}
+
+img.logo {
+  height: 150px;
   padding: 0;
 }
 
+.difficulty {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  border: 5px solid #ff999c;
+  background-color: #ffdbdc;
+  padding: 10px;
+  font-size: 1.5rem;
+}
+
+input {
+  font-family: Suez One, sans-serif, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+  background-color: #fbfeee;
+  margin: 10px;
+  padding: 5px;
+  width: 2.5rem;
+  font-size: 1.25rem;
+}
+
+#btn-reset {
+  border-radius: 8px;
+  background-color: #ffb3b6;
+  /* font-size: 1.25rem; */
+  /* font-weight: 900; */
+}
+
+#btn-reset:hover {
+  background-color: #f7888c;
+}
+
 .scoreboard {
+  display: flex;
+  flex-direction: column;
   border-radius: 8px;
   border: 5px solid #0a715e;
   background-color: #b8e0c8;
-
-  font-size: 2rem;
+  padding: 20px;
 }
 
 .cards-cont {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   border-radius: 8px;
   
   border: 5px solid #8bc6da;
   background-color: #c5e3ed;
+  padding: 10px;
   
+}
+
+.card {
+  border-radius: 8px;
+  border: 5px solid #d59e10;
+  background-color: #fceca6;
+  margin: 20px;
+  transition: border-color 0.25s, background-color 0.5s;
+  font-family: Suez One, sans-serif, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+}
+
+.card:hover {
+  border: 5px solid #a38333;
+  background-color: #e3cd96;
+  transform: scale(1.1);
 }
 
 .card-img {
@@ -33,29 +127,14 @@ body {
 }
 
 .card-name {
-  margin-top: 20px;
   font-size: 2rem;
+  color: #74664b;
+  
+  margin-top: 20px;
+  /* color: transparent;
+  font-size: 0; */
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-button {
-  border-radius: 8px;
-  border: 5px solid #a4610e;
-  background-color: #fbe8d0;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #e7000a;
-}
+  /* --Purple
+  border-color: #a4610e;
+  background-color: #e8dec5; */
