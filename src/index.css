@@ -1,156 +1,233 @@
-@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
+@font-face {
+  font-family: "Seurat Pro";
+  src: local("Seurat-Pro"),
+  url("./fonts/Seurat-Pro.otf") format("truetype");
+}
 
-
-/* @font-face { */
-  /* font-family: "Pokemon";   Can be any text */
-  /* src: local("Pokemon-RS"), */
-  /* url("./fonts/pokemon-rs.ttf") format("truetype"); */
-/* } */
+@font-face {
+  font-family: "Suez One";
+  src: local("Suez-One"),
+  url("./fonts/SuezOne-Regular.ttf") format("truetype");
+}
 
 body {
   font-family: Suez One, sans-serif, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
   color: #74664b;
   background-color: #c7dba2;
-  margin: 0;
   padding: 0;
+  margin: 0;
+}
+
+.page-layout {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  min-height: 100vh;
 }
 
 section {
-  max-width: 2000px;
-  margin: 20px;
+  max-width: 1200px;
+  margin: 20px 0;
+  padding: 20px;
+  width: 100%;
 }
 
 button {
-  padding: 10px;
+  font-family: "Seurat Pro", sans-serif, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+  padding: 5px 10px;
 }
 
 .header-cont {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-evenly;
   border-radius: 8px;
   border: 5px solid #9ac375;
   background-color: #e6efd6;
-  padding: 15px;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
 
-h1 {
-  font-size: 2.5rem;
-  color: #ffd045;
-  background-color: #ae783d;
-  text-shadow: 3px 2px #6f4319;
-  border-radius: 5px;
-  padding: 15px;
-  margin: 0 5px;
-  text-align: center;
-  transform: rotate(-5deg);
-  box-shadow: 3px 3px #6f4319;
-}
+  h1 {
+    font-size: 2.5rem;
+    color: #ffd045;
+    background-color: #ae783d;
+    text-shadow: 3px 2px #6f4319;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 0 5px;
+    text-align: center;
+    transform: rotate(-5deg);
+    box-shadow: 3px 3px #6f4319;
+  }
 
-img.logo {
-  height: 150px;
-  padding: 0;
-}
+  img.logo {
+    height: 150px;
+    padding: 0;
+  }
 
-.difficulty {
-  display: flex;
-  align-items: center;
-  border-radius: 8px;
-  border: 5px solid #ff999c;
-  background-color: #ffdbdc;
-  padding: 10px;
-}
+  .difficulty {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    border: 5px solid #f94b3e;
+    background-color: #ffdbdc;
+    padding: 10px;
+  }
 
-input {
-  font-family: Suez One, sans-serif, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
-  background-color: #fbfeee;
-  margin: 10px;
-  padding: 5px;
-  width: 2.5rem;
-  font-size: 1.25rem;
-}
+  input {
+    font-family: Suez One, sans-serif, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+    background-color: #fbfeee;
+    margin-left: 5px;
+    padding: 5px;
+    width: 2.5rem;
+    font-size: 1.25rem;
+  }
 
-#btn-reset {
-  border-radius: 8px;
-  background-color: #ffb3b6;
-  font-weight: 900;
-}
+  #btn-set, #btn-toggle-name {
+    border-radius: 8px;
+    border: 3px solid #ff999c;
+    background-color: #ffb3b6;
+    font-weight: 900;
+    margin: 0 10px;
+  }
 
-#btn-reset:hover {
-  background-color: #f7888c;
-}
+  #btn-set:hover, #btn-toggle-name:hover {
+    background-color: #ffa7aa;
+  }
 
-.scoreboard {
-  display: flex;
-  flex-direction: column;
-  border-radius: 8px;
-  border: 5px solid #0a715e;
-  background-color: #b8e0c8;
-  padding: 20px;
-}
+  .scoreboard {
+    display: flex;
+    justify-content: space-around;
+    border-radius: 8px;
+    border: 5px solid #0a715e;
+    background-color: #cbece7;
+    padding: 5px;
+    font-size: 1.25rem;
+    margin: 5px 0;
+  }
+
+  .score {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #btn-reset {
+    border-radius: 8px;
+    font-weight: 900;
+    border: 3px solid #c4b756;
+    background-color: #fcfdbf;
+  }
+
+  #btn-reset:hover {
+    background-color: #eae367;
+  }
 
 .cards-cont {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   border-radius: 8px;
-  
   border: 5px solid #8bc6da;
   background-color: #c5e3ed;
-  padding: 10px; 
+  margin-bottom: 100px;
 }
 
-.card {
-  border-radius: 8px;
-  border: 5px solid #d59e10;
-  background-color: #fceca6;
-  margin: 20px;
-  color: #74664b;
-  font-family: Suez One, sans-serif, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
-}
-
-.card:hover {
-  border: 5px solid #a38333;
-  background-color: #e3cd96;
-  transform: scale(1.1);
-  transition: border-color 0.25s, background-color 0.25s;
-}
-
-.card-img {
-  width: 160px;
-  height: 200px;
-}
-
-.card-name {
-  font-size: 1.5rem;
-  margin-top: 10px;
-}
-
-.toggle-name {
-  margin-bottom: -10px;
-  color: transparent;
-  font-size: 0;
-}
-
-  /* --Purple
-  border-color: #a4610e;
-  background-color: #e8dec5; */
-
-
-  @keyframes card-half-flip {
-    0% {
-      transform: rotateY(-90deg)
-    }
-    100% {
-      transform: rotateY(0deg)
-    }
+  .card {
+    border-radius: 8px;
+    border: 5px solid #d59e10;
+    background-color: #fceca6;
+    margin: 20px;
+    color: #74664b;
+    font-family: "Seurat Pro", sans-serif, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+    box-shadow: 5px 3px #8a7416;
+    /* animation: card-flip 1000ms; */
   }
+
+  .card:hover {
+    border: 5px solid #a38333;
+    background-color: #e3cd96;
+    transform: scale(1.1);
+    transition: border-color 0.25s, background-color 0.25s;
+  }
+
+  .card-img {
+    width: 160px;
+    height: 200px;
+  }
+
+  .card-name {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+
+  .hide-name {
+    margin-bottom: -10px;
+    color: transparent;
+    font-size: 0;
+  }
+
+footer {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  font-size: 1.25rem;
+  background-color: #9ac375;
+  width: 100%;
+  font-family: "Seurat Pro", sans-serif, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+  position: absolute;
+  bottom: 0;
+  padding: 20px 0;
+
+}
+
+dialog {
+  border-radius: 20px;
+  border: 5px solid #f3ba06;
+  background-color: #fffae4;
+  color: #74664b;
+  font-family: "Seurat Pro", sans-serif, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+  font-size: 1.5rem;
+  box-shadow: 5px 8px rgba(90, 90, 90, 0.781);
+  padding: 30px;
+  position: absolute;
+  bottom: 50vh;
+  z-index: 1;
+}
+
+dialog::backdrop {
+  background-color: #4b5e4742;
+}
+
+#win-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#btn-close {
+  margin-top: 20px;
+  padding: 10px;
+
+  border-radius: 8px;
+  font-weight: 900;
+  border: 3px solid #d4a4dc;
+  background-color: #f4ecfc;
+}
+
+#btn-close:hover {
+  background-color: #e1c1e7;
+}
+
+/* @keyframes card-flip {
+  0% {
+    transform: rotateY(-90deg)
+  }
+  100% {
+    transform: rotateY(0deg)
+  }
+} */

@@ -10,8 +10,19 @@ function App() {
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [memory, setMemory] = useState([]);
-  const [difficulty, setDifficulty] = useState(6);
+  const [difficulty, setDifficulty] = useState(5);
+
   var deckSize = difficulty;
+  const dialog = document.querySelector("dialog");
+  const winMessage = document.getElementById('win-message');
+  const btn_close = document.createElement('button');
+  btn_close.id = "btn-close";
+  btn_close.textContent = "Start New Game";
+
+  btn_close.addEventListener('click', () => {
+      dialog.close();
+      resetGame();
+  });
 
   const initializeDeck = () => {
     GetVillagers()
@@ -68,8 +79,10 @@ function App() {
   
   const handleCardClick = (chosenCard) => {
     if(memory.includes(chosenCard)) {
-      console.log("You lost");
-      resetGame();
+      winMessage.textContent = "You lose... Try not to choose a card twice.";
+      winMessage.appendChild(btn_close);
+      dialog.showModal();
+      return;
     } else {
       setScore((score) => {
         var newScore = score + 1;
@@ -81,21 +94,23 @@ function App() {
 
       setMemory(prevMemory => [...prevMemory, chosenCard]);
       if ((memory.length + 1) === deck.length) {
-        console.log("You win");
-        resetGame();
+        winMessage.textContent = "You win! All cards were only chosen once.";
+        winMessage.appendChild(btn_close);
+        dialog.showModal();
+        return;
       }
     }
 
     shuffleDeck(deck);
   }
 
-  const resetGame = (difficulty) => {
-    if (difficulty < 4) {
-      deckSize = 4;
-      setDifficulty(4);
-    } else if (difficulty > 20) {
-      deckSize = 20;
-      setDifficulty(20);
+  const resetGame = () => {
+    if (difficulty < 3) {
+      deckSize = 3;
+      setDifficulty(3);
+    } else if (difficulty > 24) {
+      deckSize = 24;
+      setDifficulty(24);
     }
 
     setScore(0);
@@ -106,32 +121,40 @@ function App() {
   const toggleName = () => {
     const cardClass = document.querySelectorAll(".card-name");
     let cardList = [...cardClass];
-    cardList.forEach(card => card.classList.toggle('toggle-name'));
+    cardList.forEach(card => card.classList.toggle('hide-name'));
   }
 
   return (
-    <div>
+    <div className="page-layout">
       <section className="header-cont">
         <div className="header">
           <img className="logo" src={logoACNH}/>
           <h1>Memory Game</h1>
         </div>
 
-        <div className="difficulty">
-          <label>Difficulty: </label>
-          <input type="number" min="4" max="20" value={difficulty} onChange={e => setDifficulty(e.target.value)}/>
-          <button id="btn-reset" onClick={() => resetGame(difficulty)}>Set</button>
-          <button id="btn-toggle-name" onClick={() => toggleName()}>Toggle Names</button>
-        </div>
+        <div>
+          <div className="difficulty">
+              <label>Cards: </label>
+              <input type="number" min="3" max="24" value={difficulty} onChange={e => setDifficulty(e.target.value)}/>
+              <button id="btn-set" onClick={() => {
+                  setHighScore(0);
+                  resetGame();
+              }}>Set</button>
+              <button id="btn-toggle-name" onClick={() => toggleName()}>Toggle Names</button>
+            </div>
 
-        <div className="scoreboard">
-        <span>High Score: {highScore}</span>
-        <span>Score: {score}</span>
-      </div>
+            <div className="scoreboard">
+              <div className="score">
+                <span>High Score: {highScore}</span>
+                <span>Score: {score}</span>
+              </div>
+            <button id="btn-reset" onClick={() => resetGame()}>Reset Game</button>
+          </div>
+        </div>
       </section>
 
       <section className="cards-cont">
-        {deck.map((card) => {
+        {deck.map((card) => {        
           return (
             <Card
               name={card.name}
@@ -142,6 +165,14 @@ function App() {
           );
         })}    
       </section>
+
+      <footer>
+        <div><em>Memory Game</em> Project by <a href="https://github.com/andrewtran28/memory-card-game">minglee</a>; Assets provided by <a href="https://api.nookipedia.com/">Nookipedia API</a></div>
+      </footer>
+
+      <dialog>
+        <div id="win-message"></div>
+      </dialog>
     </div>
   )
 }
