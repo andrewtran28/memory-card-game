@@ -3,8 +3,6 @@ import logoACNH from './assets/logoACNH.webp'
 import getNookipediaData from './components/Nookipedia';
 import Card from './components/Card';
 
-let villagers = await getNookipediaData();
-
 function App() {
   const [deck, setDeck] = useState([]);
   const [score, setScore] = useState(0);
@@ -24,8 +22,9 @@ function App() {
       resetGame();
   });
 
-  const initializeDeck = () => {
-    GetVillagers()
+  const initializeDeck = async () => {
+    let villagers = await getNookipediaData();
+    GetVillagers(villagers)
       .then((deck) => {
           setDeck(deck);
       })
@@ -40,7 +39,7 @@ function App() {
     return Math.floor(Math.random() * VILLAGER_NUM);
   }
 
-  const GetVillagers = async () => { 
+  const GetVillagers = async (villagers) => { 
     let stack = [];
     let indexStack = [];
 

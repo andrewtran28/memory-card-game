@@ -1,13 +1,13 @@
 @font-face {
   font-family: "Seurat Pro";
   src: local("Seurat-Pro"),
-  url("./fonts/Seurat-Pro.otf") format("truetype");
+  url("../fonts/Seurat-Pro.otf") format("truetype");
 }
 
 @font-face {
   font-family: "Suez One";
   src: local("Suez-One"),
-  url("./fonts/SuezOne-Regular.ttf") format("truetype");
+  url("../fonts/SuezOne-Regular.ttf") format("truetype");
 }
 
 body {
