@@ -23,14 +23,10 @@ function App() {
       resetGame();
   });
 
-  const initializeDeck = () => {
-    setDeck(GetVillagers());
-  }
-
   useEffect(() => {
     getNookipediaData()
       .then ((data) => setVillagers(data))
-      .then (() => initializeDeck());
+      .then (() => setDeck(GetVillagers()));
   }, [villagers.length]); //Will re-render once villagers is no longer empty array
 
   const RandomNumber = () => {
@@ -113,7 +109,7 @@ function App() {
 
     setScore(0);
     setMemory([]);
-    initializeDeck();
+    setDeck(GetVillagers());
   }
 
   const toggleName = () => {
