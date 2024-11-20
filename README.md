@@ -1,13 +1,11 @@
-A React web application game that tests your memory. To play, only select the cards that you have previously not clicked before. The card assets show the names and images of random Villagers from the video game Animal Crossing: New Horizons. Assets were provided by the Nookipedia API.
+A React web application game that tests your memory. To play, only select the cards that you have previously not clicked before. The card assets show the names and images of random Villagers from the video game Animal Crossing: New Horizons. Assets were provided by the [Nookipedia API](https://api.nookipedia.com/).
+
+[Live Preview](https://acnh-memory-game.netlify.app/)
+
+To Do:
 
 
-
-Known Issues
-
--Need to create top-level IIFE async function to only require one API request instead for each round.
-
-
--Add card-flip animation upon card click (applies to all cards)
+-Add card-flip animation upon card click (animation should apply to all cards)
 
 # React + Vite
 
