@@ -4,14 +4,14 @@ import getNookipediaData from './components/Nookipedia';
 import Card from './components/Card';
 
 function App() {
+  const [villagers, setVillagers] = useState([]);
   const [deck, setDeck] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [memory, setMemory] = useState([]);
   const [difficulty, setDifficulty] = useState(5);
-  const [villagers, setVillagers] = useState([]);
-
   var deckSize = difficulty;
+
   const dialog = document.querySelector("dialog");
   const winMessage = document.getElementById('win-message');
   const btn_close = document.createElement('button');
