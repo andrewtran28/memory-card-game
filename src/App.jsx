@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import logoACNH from './assets/logoACNH.webp'
+import logoACNH from './assets/logoACNH.webp';
 import getNookipediaData from './components/Nookipedia';
 import Card from './components/Card';
 
@@ -9,6 +9,7 @@ function App() {
   const [highScore, setHighScore] = useState(0);
   const [memory, setMemory] = useState([]);
   const [difficulty, setDifficulty] = useState(5);
+  const [villagers, setVillagers] = useState([]);
 
   var deckSize = difficulty;
   const dialog = document.querySelector("dialog");
@@ -22,24 +23,22 @@ function App() {
       resetGame();
   });
 
-  const initializeDeck = async () => {
-    let villagers = await getNookipediaData();
-    GetVillagers(villagers)
-      .then((deck) => {
-          setDeck(deck);
-      })
+  const initializeDeck = () => {
+    setDeck(GetVillagers());
   }
 
   useEffect(() => {
-    initializeDeck();
-  },[]);
+    getNookipediaData()
+      .then ((data) => setVillagers(data))
+      .then (() => initializeDeck());
+  }, [villagers.length]); //Will re-render once villagers is no longer empty array
 
   const RandomNumber = () => {
     const VILLAGER_NUM = 488; //Total villagers in Animal Crossing Series
     return Math.floor(Math.random() * VILLAGER_NUM);
   }
 
-  const GetVillagers = async (villagers) => { 
+  const GetVillagers = () => { 
     let stack = [];
     let indexStack = [];
 
