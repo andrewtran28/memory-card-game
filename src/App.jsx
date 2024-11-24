@@ -26,7 +26,11 @@ function App() {
   useEffect(() => {
     getNookipediaData()
       .then ((data) => setVillagers(data))
-      .then (() => setDeck(GetVillagers()));
+      .finally (() => {
+        if (villagers.length !== 0) {
+          setDeck(GetVillagers());
+        }
+      })
   }, [villagers.length]); //Will re-render once villagers is no longer empty array
 
   const RandomNumber = () => {
